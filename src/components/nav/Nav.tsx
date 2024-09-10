@@ -22,7 +22,7 @@ export const Nav = () => {
         .reduce((prev, curr) => prev + curr.qty * curr.item.price[currency], 0)
         .toFixed(2),
     );
-  }, [bag]);
+  }, [bag, currency]);
 
   return (
     <div className="nav">

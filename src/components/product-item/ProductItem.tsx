@@ -23,13 +23,13 @@ export const ProductItem = (props: Props) => {
   useEffect(() => {
     const found = bag.find(el => el.item.id === props.product.id);
     setIsInBag(Boolean(!found));
-  }, [bag]);
+  }, [bag, props.product.id]);
 
   return (
     <div className="product">
       <img
         src={props.product.images[0]}
-        alt="product image"
+        alt="product"
         className="product-image"
       />
       <h4 className="product-title">{props.product.title}</h4>

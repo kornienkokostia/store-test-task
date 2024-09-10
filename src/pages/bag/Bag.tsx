@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom';
 import { BagItemComp } from './BagItem';
 import { Input } from '../../components/input/Input';
 import { db } from '../../helpers/db';
-import { addDoc, collection, doc, setDoc } from 'firebase/firestore';
+import { addDoc, collection } from 'firebase/firestore';
 import { clearBag } from '../../features/appSlice';
 
 export const Bag = () => {

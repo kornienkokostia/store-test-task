@@ -13,34 +13,35 @@ import { setBag } from './features/appSlice';
 function App() {
   const dispatch = useDispatch();
 
-  const fetchBag = async (saved: SavedDataItem[]) => {
-    const queryVal = query(
-      collection(db, 'products'),
-      where(
-        '__name__',
-        'in',
-        saved.map(el => el.id),
-      ),
-    );
-    const productsRes = await getDocs(queryVal);
-    const products: BagItem[] = productsRes.docs.map(el => {
-      const data = { id: el.id, ...el.data() } as Product;
-      const qty = saved.find(item => el.id === item.id)?.qty || 1;
-      return {
-        item: data,
-        qty,
-      };
-    });
-    dispatch(setBag(products));
-  };
-
   useEffect(() => {
     const savedDataJson = localStorage.getItem(BAG_LOCAL_STORAGE_KEY) || '';
     const saved: SavedDataItem[] = JSON.parse(savedDataJson) || [];
+
+    const fetchBag = async (saved: SavedDataItem[]) => {
+      const queryVal = query(
+        collection(db, 'products'),
+        where(
+          '__name__',
+          'in',
+          saved.map(el => el.id),
+        ),
+      );
+      const productsRes = await getDocs(queryVal);
+      const products: BagItem[] = productsRes.docs.map(el => {
+        const data = { id: el.id, ...el.data() } as Product;
+        const qty = saved.find(item => el.id === item.id)?.qty || 1;
+        return {
+          item: data,
+          qty,
+        };
+      });
+      dispatch(setBag(products));
+    };
+
     if (saved.length) {
       fetchBag(saved);
     }
-  }, [fetchBag]);
+  }, [dispatch]);
 
   return (
     <BrowserRouter>

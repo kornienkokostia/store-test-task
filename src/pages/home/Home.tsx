@@ -1,12 +1,4 @@
-import {
-  addDoc,
-  collection,
-  doc,
-  getDocs,
-  limit,
-  query,
-  setDoc,
-} from 'firebase/firestore';
+import { collection, getDocs, limit, query } from 'firebase/firestore';
 import { db } from '../../helpers/db';
 import { useEffect, useState } from 'react';
 import { Product } from '../../types';
