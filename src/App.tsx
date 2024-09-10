@@ -14,7 +14,7 @@ function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    const savedDataJson = localStorage.getItem(BAG_LOCAL_STORAGE_KEY) || '';
+    const savedDataJson = localStorage.getItem(BAG_LOCAL_STORAGE_KEY) || '{}';
     const saved: SavedDataItem[] = JSON.parse(savedDataJson) || [];
 
     const fetchBag = async (saved: SavedDataItem[]) => {
