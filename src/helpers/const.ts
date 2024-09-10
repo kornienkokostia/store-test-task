@@ -1,0 +1,1 @@
+export const BAG_LOCAL_STORAGE_KEY = 'store-bag'

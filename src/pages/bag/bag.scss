@@ -1,0 +1,207 @@
+.bag {
+  &-wrapper {
+    display: flex;
+    justify-content: center;
+    padding: 40px 20px;
+    background-color: #ffffff;
+    min-height: calc(100vh - 80px - 44px);
+  }
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 1000px;
+  width: 100%;
+  &-title {
+    font-size: 40px;
+    color: #000000;
+    font-weight: 500;
+  }
+  &-subtitle {
+    font-size: 17px;
+    padding: 13px 0 0;
+  }
+  &-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    margin: 30px 0 0;
+    background-color: #ebebeb;
+    color: #000000;
+    border-radius: 12px;
+    height: 56px;
+    max-width: 360px;
+    width: 100%;
+    border: none;
+    outline: none;
+    font-size: 17px;
+    user-select: none;
+    letter-spacing: 0.022em;
+    cursor: pointer;
+    margin-bottom: 60px;
+  }
+  &-items {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+  &-item {
+    display: grid;
+    width: 100%;
+    border-top: 1px solid #c2c2c7;
+    grid-template-columns: 245px auto 96px 150px;
+    column-gap: 20px;
+    padding: 60px 0;
+    &-img {
+      width: 100%;
+      height: 200px;
+      object-fit: contain;
+    }
+    &-title {
+      font-size: 24px;
+      padding-right: 30px;
+      font-weight: 500;
+    }
+    &-qty {
+      &-contorls {
+        display: flex;
+        gap: 7px;
+        height: fit-content;
+        align-items: center;
+      }
+      &-btn {
+        width: 26px;
+        height: 26px;
+        border: 1.5px solid #c2c2c7;
+        background-color: #fff;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        box-sizing: border-box;
+        cursor: pointer;
+        transition: transform 0.1s;
+        &:active {
+          transform: scale(0.75);
+        }
+      }
+      &-val {
+        width: 30px;
+        text-align: center;
+      }
+    }
+    &-last {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      font-size: 24px;
+      font-weight: 500;
+    }
+    &-btn-remove {
+      display: flex;
+      background-color: transparent;
+      height: fit-content;
+      padding: 0;
+      color: #0077ed;
+      border: none;
+      outline: none;
+      font-size: 17px;
+      margin-top: 15px;
+      font-weight: 500;
+      cursor: pointer;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+  &-footer {
+    display: flex;
+    justify-content: space-between;
+    width: calc(100% - 265px);
+    padding-top: 20px;
+    &-wrapper {
+      border-top: 1px solid #c2c2c7;
+      display: flex;
+      width: 100%;
+      justify-content: flex-end;
+      font-size: 24px;
+      font-weight: 500;
+    }
+  }
+  &-form {
+    display: grid;
+    width: 100%;
+    gap: 20px;
+    grid-template-columns: repeat(2, 1fr);
+    &-title {
+      margin-top: 60px;
+      font-weight: 500;
+      margin-bottom: 20px;
+      text-align: left;
+      width: 100%;
+    }
+    &-btn {
+      margin: 0;
+      background-color: #0077ed;
+      color: #ffffff;
+      max-width: 360px;
+      width: 100%;
+      grid-column: 1/3;
+      &:disabled {
+        filter: opacity(0.6);
+        cursor: default;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .bag {
+    &-item {
+      grid-template-columns: 245px auto;
+      &-img {
+        grid-row: 1/3;
+      }
+      &-title {
+        padding: 0px;
+        grid-column: 2/4;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 520px) {
+  .bag {
+    &-item {
+      grid-template-columns: 96px auto auto;
+      row-gap: 20px;
+      &-img {
+        grid-row: 1;
+        grid-column: 1/4;
+        width: 100%;
+      }
+      &-title {
+        grid-column: 1/4;
+        grid-row: 2;
+        height: 55.19px;
+      }
+      &-qty {
+        grid-column: 1;
+        grid-row: 3;
+      }
+      &-last {
+        grid-row: 3;
+        grid-column: 3;
+      }
+    }
+    &-footer {
+      width: 100%;
+    }
+    &-form {
+      grid-template-columns: repeat(1, 100%);
+      &-btn {
+        grid-column: 1/2;
+      }
+    }
+  }
+}

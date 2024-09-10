@@ -1,0 +1,42 @@
+.spinner {
+  position: relative;
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  &.big {
+    font-size: 30px;
+  }
+  &.small {
+    font-size: 25px;
+  }
+  .spinner-blade {
+    position: absolute;
+    left: 0.4629em;
+    bottom: 0;
+    width: 0.074em;
+    height: 0.2777em;
+    border-radius: 0.0555em;
+    background-color: transparent;
+    transform-origin: center -0.25em;
+    animation: spinner-fade 1s infinite linear;
+    $animation-delay: -1s;
+    $blade-rotation: 0deg;
+
+    @for $i from 1 through 12 {
+      &:nth-child(#{$i}) {
+        animation-delay: $animation-delay;
+        transform: rotate($blade-rotation);
+        $blade-rotation: $blade-rotation + 30;
+        $animation-delay: $animation-delay + 0.083;
+      }
+    }
+  }
+}
+@keyframes spinner-fade {
+  0% {
+    background-color: #343232;
+  }
+  100% {
+    background-color: rgba(52, 50, 50, 0.25);
+  }
+}

@@ -1,0 +1,17 @@
+.nav {
+  height: 44px;
+  background-color: #000000;
+  color: #ffffff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+  &-bag {
+    color: #ffffff;
+    &-wrapper {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+  }
+}
