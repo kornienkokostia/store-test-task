@@ -13,14 +13,6 @@ import { setBag } from './features/appSlice';
 function App() {
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    const savedDataJson = localStorage.getItem(BAG_LOCAL_STORAGE_KEY) || '';
-    const saved: SavedDataItem[] = JSON.parse(savedDataJson) || [];
-    if (saved.length) {
-      fetchBag(saved);
-    }
-  }, []);
-
   const fetchBag = async (saved: SavedDataItem[]) => {
     const queryVal = query(
       collection(db, 'products'),
@@ -41,6 +33,14 @@ function App() {
     });
     dispatch(setBag(products));
   };
+
+  useEffect(() => {
+    const savedDataJson = localStorage.getItem(BAG_LOCAL_STORAGE_KEY) || '';
+    const saved: SavedDataItem[] = JSON.parse(savedDataJson) || [];
+    if (saved.length) {
+      fetchBag(saved);
+    }
+  }, [fetchBag]);
 
   return (
     <BrowserRouter>
